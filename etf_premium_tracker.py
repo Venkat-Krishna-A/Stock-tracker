@@ -6,7 +6,8 @@ import requests
 import holidays
 
 LOG_FILE = "etf_premium_log.csv"
-ETF_LIST = ["MON100", "MAFANG"]
+# List of ETFs you want to track based on your portfolio
+ETF_LIST = ["GOLDBEES", "MAFANG", "MIDCAPETF", "MON100", "NIFTYBEES", "SILVERBEES"]
 
 def is_market_open_today():
     today = datetime.date.today()
