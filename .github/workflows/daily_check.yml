@@ -17,7 +17,7 @@ jobs:
       - run: python etf_premium_tracker.py
       # NEW STEP: Sends the daily CSV file to your secondary email
       - name: Send email with CSV attachment
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
           server_port: 465
@@ -36,6 +36,6 @@ jobs:
             Regards,
             GitHub Actions Bot
           attachments: etf_premium_log.csv
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Daily ETF premium update"
