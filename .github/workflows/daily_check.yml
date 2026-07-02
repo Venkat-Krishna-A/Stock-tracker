@@ -15,6 +15,27 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python etf_premium_tracker.py
+      # NEW STEP: Sends the daily CSV file to your secondary email
+      - name: Send email with CSV attachment
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Daily ETF Premium/Discount Report
+          to: Venkatavamsi1999@gmail.com
+          from: ETF Tracker Bot
+          body: |
+            Hi,
+            
+            The daily ETF Premium/Discount tracker has completed successfully. 
+            Please find the updated log file attached.
+            
+            Regards,
+            GitHub Actions Bot
+          attachments: etf_premium_log.csv
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Daily ETF premium update"
