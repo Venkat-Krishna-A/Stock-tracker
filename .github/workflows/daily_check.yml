@@ -17,6 +17,7 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python etf_premium_tracker.py
+      - run: python generate_chart.py
       # NEW STEP: Sends the daily CSV file to your secondary email
       - name: Send email with CSV attachment
         uses: dawidd6/action-send-mail@v4
