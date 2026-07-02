@@ -21,7 +21,7 @@ import os
 # Add more ETFs here as (label, NSE ticker, AMFI scheme name substring)
 WATCHLIST = [
     ("MAFANG", "MAFANG.NS", "Mirae Asset NYSE FANG"),
-    ("MON100", "MON100.NS", "Motilal Oswal NASDAQ 100 ETF")
+    ("MON100", "MON100.NS", "Motilal Oswal NASDAQ 100 ETF"),
     ("GOLDBEES", "GOLDBEES.NS", "Nippon India ETF Gold BeES"),
     ("NIFTYBEES", "NIFTYBEES.NS", "Nippon India ETF Nifty 50"),
     ("MIDCAPETF", "MIDCAPETF.NS", "Nippon India ETF Nifty Midcap 150"),
