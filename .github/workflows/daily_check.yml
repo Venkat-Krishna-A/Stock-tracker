@@ -28,7 +28,8 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Daily ETF Premium/Discount Report
-          to: Venkatavamsi1999@gmail.com
+          to: ${{ secrets.RECEIVER_EMAIL }}
+
           from: ETF Tracker Bot
           body: |
             Hi,
