@@ -8,6 +8,8 @@ on:
 jobs:
   run-tracker:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the bot to commit the CSV file, but blocks everything else
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
@@ -17,7 +19,8 @@ jobs:
       - run: python etf_premium_tracker.py
       # NEW STEP: Sends the daily CSV file to your secondary email
       - name: Send email with CSV attachment
-        uses: dawidd6/action-send-mail@v4
+        uses: dawidd6/action-send-mail@7c10972986427db8a529a9ea07bc6e0b70d499fe # Matches v4.1.0
+
         with:
           server_address: smtp.gmail.com
           server_port: 465
