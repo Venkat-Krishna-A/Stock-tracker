@@ -114,3 +114,49 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+    # =========================================================
+# CLEANUP CODE: Paste this at the absolute end of the file
+# =========================================================
+
+def remove_csv_duplicates():
+    if not os.path.isfile(LOG_FILE):
+        return
+        
+    print("\nRunning post-run cleanup to remove any duplicate rows...")
+    
+    # Read all lines from the CSV
+    with open(LOG_FILE, "r", newline="") as f:
+        reader = csv.reader(f)
+        header = next(reader, None)
+        rows = list(reader)
+        
+    if not header:
+        return
+
+    # Use a dictionary to keep only the LAST unique entry for (date, etf)
+    # The keys will be (date, etf) and the value will be the full row data
+    unique_rows = {}
+    for row in rows:
+        if len(row) >= 2:
+            date = row[0]
+            etf = row[1]
+            unique_rows[(date, etf)] = row
+
+    # Overwrite the CSV file with unique rows only
+    with open(LOG_FILE, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(unique_rows.values())
+        
+    print(f"Cleanup complete! Saved {len(unique_rows)} unique records.")
+
+# Inject the cleanup to run right at the end of execution
+if __name__ == "__main__":
+    remove_csv_duplicates()
+
